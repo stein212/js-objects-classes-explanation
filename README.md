@@ -7,7 +7,6 @@
     -   Data structure integrity
     -   Reusability
     -   Extensibility
--   Mini Exercise
 
 ---
 
@@ -256,4 +255,92 @@ t1.getTimeSinceCreated() // Some number
 
 From the example above, you can see how class make it easier to do whatever we just did with functions previously. This cleaner looking code is what we call 'Syntactic sugar' as it makes the previous implementation easier and shorter.
 
----
+Now let's do a new system. We will try to simulate a simple secondary school personnel database. We shall use the new class syntax for this.
+
+In a school we have teachers and students, so we shall be modeling that to keep track of the personnels in a school.
+
+First we have a generic template that is common for both teachers and students.
+
+```js
+class Person {
+    // dateOfBirth format - dd-mmm-yyyy
+    constructor(firstName, lastName, gender, dateOfBirth) {
+        this.firstName = firstName
+        this.lastName = lastName
+        this.gender = gender
+        this.dateOfBirth = new Date(dateOfBirth)
+    }
+
+    getAge() {
+        let millisecondsDifference = new Date() - this.dateOfBirth
+        let age = millisecondsDifference / 1000 / 60 / 60 / 24 / 365
+        return Math.floor(age)
+    }
+}
+```
+
+First we create a `Person` class as a template to create more `Person`s later.
+
+```js
+// We can create `Person` objects
+let p1 = new Person('John', 'Doe', 'male', '20-mar-2000')
+let p2 = new Person('Jane', 'Doe', 'female', '31-dec-2001')
+```
+
+We are creating `Person` class as our common base for our next classes `Teacher` and `Student`.
+
+```js
+class Teacher extends Person {
+    constructor(firstName, lastName, gender, dateOfBirth, subject, year) {
+        super(firstName, lastName, gender, dateOfBirth)
+        // subject refers to which subject the teacher is teaching
+        this.subject = subject
+        // year refers to which year the teacher is teaching
+        // e.g. Year 4 classes
+        this.year = year
+    }
+}
+
+// So we can create teachers like so
+let t1 = new Teacher('Sarah', 'Tan', 'female', '7-jun-1985', 'physics', 3)
+let t2 = new Teacher('Benjamin', 'Lee', 'male', '21-sep-1973', 'english', 2)
+
+// And we can store the information of these teachers in an array
+
+let teachers = [t1, t2]
+```
+
+Let's do the same thing for students
+
+```js
+class Student extends Person {
+    constructor(firstName, lastName, gender, dateOfBirth, grades, year) {
+        super(firstName, lastName, gender, dateOfBirth)
+        // grades is a list of subjects with their respective grades
+        this.grades = grades
+        this.year = year
+    }
+}
+
+// So we can create teachers like so
+let s1 = new Student(
+    'Cathy',
+    'Ng',
+    'female',
+    '18-aug-2005',
+    [{ english: 'A', physics: 'B' }],
+    2
+)
+let s2 = new Student(
+    'Alex',
+    'Teo',
+    'male',
+    '26-apr-2004',
+    [{ english: 'B', physics: 'C' }],
+    3
+)
+
+// And we can store the information of these students in an array
+
+let students = [s1, s2]
+```
