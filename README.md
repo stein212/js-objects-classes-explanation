@@ -92,7 +92,7 @@ todo.done = false
 // }
 ```
 
-As you can see, our object is modeling how a todo in real life might look like. It contains the name of the todo, along with the state of the todo (isDone)
+As you can see, our object is modelling how a todo in real life might look like. It contains the name of the todo, along with the state of the todo (isDone)
 
 Now this is just 1 todo, we have to make a list of them so.
 
@@ -257,7 +257,7 @@ From the example above, you can see how class make it easier to do whatever we j
 
 Now let's do a new system. We will try to simulate a simple secondary school personnel database. We shall use the new class syntax for this.
 
-In a school we have teachers and students, so we shall be modeling that to keep track of the personnels in a school.
+In a school we have teachers and students, so we shall be modelling that to keep track of the personnels in a school.
 
 First we have a generic template that is common for both teachers and students.
 
