@@ -322,7 +322,7 @@ class Student extends Person {
     }
 }
 
-// So we can create teachers like so
+// So we can create students like so
 let s1 = new Student(
     'Cathy',
     'Ng',
